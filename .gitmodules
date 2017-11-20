@@ -1,0 +1,3 @@
+[submodule "deps/libwdi"]
+	path = deps/libwdi
+	url = git@github.com:pbatard/libwdi.git
