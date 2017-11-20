@@ -19,6 +19,7 @@
 
 #include <nan.h>
 #include <iostream>
+#include <libwdi.h>
 
 NAN_METHOD(install);
 

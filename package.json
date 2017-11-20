@@ -14,9 +14,6 @@
     "driver",
     "usb"
   ],
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
     "configure": "node-gyp configure",
     "build": "node-gyp build",
@@ -25,7 +22,7 @@
     "lint-js": "eslint *.js",
     "lint-cpp": "cpplint --recursive src",
     "lint": "npm run lint-js && npm run lint-cpp",
-    "test": "npm run lint && mocha tests -R spec"
+    "test": "npm run lint"
   },
   "author": "Juan Cruz Viotti <juan@resin.io>",
   "license": "Apache-2.0",

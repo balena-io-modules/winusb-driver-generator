@@ -14,15 +14,6 @@
  * limitations under the License.
  */
 
-/**
- * @module winusb-driver-generator
- */
+const winusbDriverGenerator = require('.')
 
-'use strict';
-
-module.exports = require('bindings')({
-  bindings: 'Generator',
-  /* eslint-disable camelcase */
-  module_root: __dirname
-  /* eslint-enable camelcase */
-});
+console.log(winusbDriverGenerator.install())

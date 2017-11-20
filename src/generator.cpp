@@ -17,6 +17,7 @@
 #include "generator.h"
 
 NAN_METHOD(install) {
+  std::cout << "Hello World\n";
   info.GetReturnValue().SetUndefined();
 }
 
