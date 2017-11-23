@@ -29,14 +29,27 @@
           "include_dirs": [
             "<(module_root_dir)\\deps\\libwdi\\libwdi",
           ],
-          "library_dirs": [
-            "<(module_root_dir)\\deps\\libwdi\\libwdi",
-          ],
+          'msvs_settings': {
+            'VCCLCompilerTool': {
+              'AdditionalOptions': [ '/GL-', '/MD' ],
+            },
+          },
+          "link_settings": {
+            "libraries": [
+              "-llibwdi.lib",
+              "-llibwdi.obj",
+              "-lsetupapi.lib",
+            ],
+            "conditions": [
+              [ 'target_arch=="x64"', {
+                "library_dirs": [ "<(module_root_dir)\\deps\\libwdi\\libwdi\\objfre_win7_amd64\\amd64" ],
+              }, {
+                "library_dirs": [ "<(module_root_dir)\\deps\\libwdi\\libwdi\\objfre_win7_x86\\i386" ],
+              } ]
+            ],
+          },
           "sources": [
             "src/generator.cpp",
-          ],
-          "libraries": [
-            "-llibwdi",
           ],
         } ],
       ],

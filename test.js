@@ -16,4 +16,4 @@
 
 const winusbDriverGenerator = require('.')
 
-console.log(winusbDriverGenerator.install())
+console.log(winusbDriverGenerator.hasDriver(0x0a5c, 0x2764))
