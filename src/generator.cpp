@@ -40,29 +40,59 @@ NAN_METHOD(hasDriver) {
   const unsigned short vendor = info[0]->Uint32Value();
   const unsigned short product = info[1]->Uint32Value();
 
-  std::cout << "Generating driver for device: " << std::hex << "0x" << vendor << ":0x" << product << std::endl;
+  std::cout << "Searching for device: " << std::hex << "0x" << vendor << ":0x" << product << std::endl;
   wdi_set_log_level(WDI_LOG_LEVEL_WARNING);
 
   bool found = false;
+  int code = WDI_SUCCESS;
   struct wdi_device_info *device_list_node;
 
-  if (generator_list_driverless_devices(&device_list_node) == WDI_SUCCESS) {
+  code = generator_list_driverless_devices(&device_list_node);
+  if (code == WDI_SUCCESS) {
     for (; device_list_node != NULL; device_list_node = device_list_node->next) {
-      printf("Found: V:%hu P:%hu\n", device_list_node->vid, device_list_node->pid);
+      std::cout << "Found: " << std::hex
+        << "0x" << device_list_node->vid
+        << ":0x" << device_list_node->pid
+        << std::endl;
       if (device_list_node->vid == vendor && device_list_node->pid == product) {
         found = true;
         break;
       }
     }
-  }
 
-  if (found) {
-    std::cout << "Device has driver!" << std::endl;
+    code = wdi_destroy_list(device_list_node);
+    if (code != WDI_SUCCESS) {
+      if (code == WDI_ERROR_BUSY) {
+        Nan::ThrowError("Can't destroy device list");
+      } else {
+        Nan::ThrowError("Unknown error");
+      }
+
+      return;
+    }
+
+  // This means the returned list is empty.
+  // See https://github.com/pbatard/libwdi/wiki/Usage
+  //
+  // If the list of driverless devices is empty, then we
+  // can assume every device has a driver, including the
+  // one the user asked about.
+  } else if (code == WDI_ERROR_NO_DEVICE) {
+    std::cout << "No driverless device detected. Assuming device has a driver" << std::endl;
+    found = true;
   } else {
-    std::cout << "Device has no driver!" << std::endl;
+    if (code == WDI_ERROR_RESOURCE) {
+      Nan::ThrowError("Memory could not be allocated internally");
+    } else if (code == WDI_ERROR_BUSY) {
+      Nan::ThrowError("Another instance of this function call is already in process");
+    } else {
+      Nan::ThrowError("Unknown error");
+    }
+
+    return;
   }
 
-  info.GetReturnValue().SetUndefined();
+  info.GetReturnValue().Set(Nan::New<v8::Boolean>(found));
 }
 
 NAN_MODULE_INIT(GeneratorInit) {
