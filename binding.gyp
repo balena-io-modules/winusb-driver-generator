@@ -10,7 +10,7 @@
               "action_name": "wdk_build",
               "inputs": [ "" ],
               "outputs": [ "deps/libwdi/libwdi/libwdi.lib" ],
-              "action": [ "call", "deps/libwdi_build.bat" ],
+              "action": [ "call", "deps/libwdi_build.bat", "<(target_arch)" ],
             }
           ],
         } ],
