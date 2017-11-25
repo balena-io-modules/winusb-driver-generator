@@ -17,16 +17,17 @@
  * limitations under the License.
  */
 
-#include <nan.h>
-#include <iostream>
 #include <stdio.h>
+#include <nan.h>
 #include <libwdi.h>
+#include <iostream>
 
 // Pragmas recommended by libwdi
 #if defined(_PREFAST_)
-// Disable "Banned API Usage:" errors when using WDK's OACR/Prefast */
+// Disable "Banned API Usage:" errors when using WDK's OACR/Prefast
 #pragma warning(disable:28719)
-// Disable "Consider using 'GetTickCount64' instead of 'GetTickCount'" when using WDK's OACR/Prefast */
+// Disable "Consider using 'GetTickCount64' instead of
+// 'GetTickCount'" when using WDK's OACR/Prefast
 #pragma warning(disable:28159)
 #endif
 
