@@ -36,3 +36,6 @@ build: off
 test_script:
   - npm test
   - node test.js
+
+deploy_script:
+  - ci\prebuild-publish.bat
