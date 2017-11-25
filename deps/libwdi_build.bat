@@ -32,8 +32,8 @@ type msvc\config.h
 
 :: Fails with the following error if this directory in not in the PATH:
 ::   winnt.h: error C1189: #error: "No Target Architecture"
-:: set PATH=%WINDDK_PATH%\%WINDDK_VERSION%\bin\x86\x86;%PATH%
-set PATH=%WINDDK_PATH%\%WINDDK_VERSION%\bin\x86\amd64;%PATH%
+if %1==x64 set PATH=%WINDDK_PATH%\%WINDDK_VERSION%\bin\x86\amd64;%PATH%
+if %1==x86 set PATH=%WINDDK_PATH%\%WINDDK_VERSION%\bin\x86\x86;%PATH%
 
 :: This script builds a static DLL if the "DLL" option is not passed
 wdk_build.cmd no_samples
