@@ -35,4 +35,5 @@ build: off
 test_script:
   - npm run configure
   - npm run build
+  - npm test
   - node test.js
