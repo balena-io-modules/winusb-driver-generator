@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <nan.h>
 #include <libwdi.h>
+#include <string>
 #include <iostream>
 
 // Pragmas recommended by libwdi
@@ -32,5 +33,6 @@
 #endif
 
 NAN_METHOD(hasDriver);
+NAN_METHOD(associate);
 
 #endif  // SRC_GENERATOR_H_
