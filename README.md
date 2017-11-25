@@ -18,10 +18,18 @@ npm install --save winusb-driver-generator
 Documentation
 -------------
 
-### `Boolean winusbDriverGenerator.hasDriver(Number vendorId, Number productId)`
+### `Boolean .hasDriver(Number vendorId, Number productId)`
 
 Check if there is a driver associated with a USB device given its vendor and
 product ID pairs.
+
+For example:
+
+```js
+if (!winusbDriverGenerator.hasDriver(0x0a5c, 0x2764)) {
+  console.log('There is no driver for this device');
+}
+```
 
 Support
 -------
