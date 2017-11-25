@@ -18,4 +18,13 @@
 
 const winusbDriverGenerator = require('.');
 
-console.log(winusbDriverGenerator.hasDriver(0x0a5c, 0x2764));
+const VENDOR_ID = 0x0a5c;
+const PRODUCT_ID = 0x2764;
+
+if (winusbDriverGenerator.hasDriver(VENDOR_ID, PRODUCT_ID)) {
+  console.log(`Device: ${VENDOR_ID}:${PRODUCT_ID} already has a driver, omitting`);
+} else {
+  console.log(`Device: ${VENDOR_ID}:${PRODUCT_ID} lacks a driver, installing`);
+  winusbDriverGenerator.associate(VENDOR_ID, PRODUCT_ID, 'Raspberry Pi USB boot');
+  console.log('Done');
+}
