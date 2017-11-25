@@ -21,18 +21,22 @@
     "lint-js": "eslint *.js",
     "lint-cpp": "cpplint --recursive src",
     "lint": "npm run lint-js && npm run lint-cpp",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "install": "prebuild-install || node-gyp rebuild",
+    "prebuild": "prebuild --all --strip"
   },
   "author": "Juan Cruz Viotti <juan@resin.io>",
   "license": "Apache-2.0",
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.9.0",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "prebuild": "^6.2.2"
   },
   "dependencies": {
     "bindings": "^1.3.0",
-    "nan": "^2.7.0"
+    "nan": "^2.7.0",
+    "prebuild-install": "^2.3.0"
   },
   "gypfile": true,
   "bugs": {
