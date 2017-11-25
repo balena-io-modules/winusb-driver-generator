@@ -18,7 +18,6 @@
     "configure": "node-gyp configure",
     "build": "node-gyp build",
     "rebuild": "node-gyp rebuild",
-    "readme": "jsdoc2md --template docs/README.hbs index.js > README.md",
     "lint-js": "eslint *.js",
     "lint-cpp": "cpplint --recursive src",
     "lint": "npm run lint-js && npm run lint-cpp",
@@ -29,7 +28,6 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.9.0",
-    "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^4.0.1"
   },
   "dependencies": {

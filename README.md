@@ -12,8 +12,16 @@ Installation
 Install `winusb-driver-generator` by running:
 
 ```sh
-$ npm install --save winusb-driver-generator
+npm install --save winusb-driver-generator
 ```
+
+Documentation
+-------------
+
+### `Boolean winusbDriverGenerator.hasDriver(Number vendorId, Number productId)`
+
+Check if there is a driver associated with a USB device given its vendor and
+product ID pairs.
 
 Support
 -------
@@ -27,7 +35,7 @@ Tests
 Run the test suite by doing:
 
 ```sh
-$ npm test
+npm test
 ```
 
 Contribute
@@ -44,7 +52,7 @@ Before submitting a PR, please make sure that you include tests, and that
 linters run without any warning:
 
 ```sh
-$ npm run lint
+npm run lint
 ```
 
 License
