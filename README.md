@@ -31,6 +31,16 @@ if (!winusbDriverGenerator.hasDriver(0x0a5c, 0x2764)) {
 }
 ```
 
+### `Void .associate(Number vendorId, Number productId, String description)`
+
+Associate a USB device with the generic WinUSB driver.
+
+For example:
+
+```js
+winusbDriverGenerator.associate(0x0a5c, 0x2764, 'Raspberry Pi USB boot');
+```
+
 Support
 -------
 
