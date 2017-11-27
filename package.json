@@ -22,7 +22,7 @@
     "lint-cpp": "cpplint --recursive src",
     "lint": "npm run lint-js && npm run lint-cpp",
     "test": "npm run lint",
-    "install": "prebuild-install || node-gyp rebuild",
+    "install": "prebuild-install || npm run rebuild",
     "prebuild": "prebuild --all --strip"
   },
   "author": "Juan Cruz Viotti <juan@resin.io>",
