@@ -15,6 +15,10 @@ Install `winusb-driver-generator` by running:
 npm install --save winusb-driver-generator
 ```
 
+Note that because of WinDDK, you can only build this module using Visual Studio
+2013, and can't target a Node v9.0.0 ABI, which uses C++ constructs unsupported
+on such Visual Studio version.
+
 Documentation
 -------------
 
