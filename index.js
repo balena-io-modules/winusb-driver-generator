@@ -26,3 +26,13 @@ module.exports = require('bindings')({
   module_root: __dirname
   /* eslint-enable camelcase */
 });
+
+module.exports.hasDriver = (vendorId, productId) => {
+  for (const device of module.exports.listDriverlessDevices()) {
+    if (device.vid === vendorId && device.pid === productId) {
+      return false;
+    }
+  }
+
+  return true;
+};

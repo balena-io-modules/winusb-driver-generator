@@ -22,6 +22,18 @@ on such Visual Studio version.
 Documentation
 -------------
 
+### `Object[] .listDriverlessDevices()`
+
+Return a list of all driverless devices found on the system.
+
+For example:
+
+```js
+winusbDriverGenerator.listDriverlessDevices().forEach((device) => {
+  console.log(device)
+})
+```
+
 ### `Boolean .hasDriver(Number vendorId, Number productId)`
 
 Check if there is a driver associated with a USB device given its vendor and

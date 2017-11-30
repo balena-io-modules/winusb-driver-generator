@@ -46,44 +46,28 @@ generator_install_winusb_inf(struct wdi_device_info *device,
   return wdi_install_driver(device, path, name, NULL);
 }
 
-NAN_METHOD(hasDriver) {
-  if (info.Length() != 2) {
-    return Nan::ThrowError("This function expects 2 arguments");
-  }
-
-  if (!info[0]->IsNumber()) {
-    return Nan::ThrowError("Product id must be a number");
-  }
-
-  if (!info[1]->IsNumber()) {
-    return Nan::ThrowError("Vendor id must be a number");
-  }
-
-  const uint16_t vendor = info[0]->Uint32Value();
-  const uint16_t product = info[1]->Uint32Value();
-
-  std::cout << "Searching for device: " << std::hex
-    << "0x" << vendor
-    << ":0x" << product
-    << std::endl;
-  wdi_set_log_level(WDI_LOG_LEVEL_WARNING);
-
-  bool found = true;
+NAN_METHOD(listDriverlessDevices) {
   int code = WDI_SUCCESS;
   struct wdi_device_info *device_list_node;
+  v8::Local<v8::Object> devices = Nan::New<v8::Array>();
+  wdi_set_log_level(WDI_LOG_LEVEL_WARNING);
 
   code = generator_list_driverless_devices(&device_list_node);
   if (code == WDI_SUCCESS) {
+    uint32_t index = 0;
     for (; device_list_node != NULL
          ; device_list_node = device_list_node->next) {
-      std::cout << "Found: " << std::hex
-        << "0x" << device_list_node->vid
-        << ":0x" << device_list_node->pid
-        << std::endl;
-      if (device_list_node->vid == vendor && device_list_node->pid == product) {
-        found = false;
-        break;
-      }
+      v8::Local<v8::Object> device = Nan::New<v8::Object>();
+      Nan::Set(device, Nan::New<v8::String>("vid").ToLocalChecked(),
+        Nan::New<v8::Number>(static_cast<double>(device_list_node->vid)));
+      Nan::Set(device, Nan::New<v8::String>("pid").ToLocalChecked(),
+        Nan::New<v8::Number>(static_cast<double>(device_list_node->pid)));
+      Nan::Set(device, Nan::New<v8::String>("hid").ToLocalChecked(),
+        Nan::New<v8::String>(device_list_node->hardware_id).ToLocalChecked());
+      Nan::Set(device, Nan::New<v8::String>("did").ToLocalChecked(),
+        Nan::New<v8::String>(device_list_node->device_id).ToLocalChecked());
+      Nan::Set(devices, index, device);
+      index++;
     }
 
     code = wdi_destroy_list(device_list_node);
@@ -95,17 +79,12 @@ NAN_METHOD(hasDriver) {
   // See https://github.com/pbatard/libwdi/wiki/Usage
   //
   // If the list of driverless devices is empty, then we
-  // can assume every device has a driver, including the
-  // one the user asked about.
-  } else if (code == WDI_ERROR_NO_DEVICE) {
-    std::cout << "No driverless device detected. "
-                 "Assuming device has a driver" << std::endl;
-    found = true;
-  } else {
+  // can assume every device has a driver.
+  } else if (code != WDI_ERROR_NO_DEVICE) {
     return Nan::ThrowError(wdi_strerror(code));
   }
 
-  info.GetReturnValue().Set(Nan::New<v8::Boolean>(found));
+  info.GetReturnValue().Set(devices);
 }
 
 NAN_METHOD(associate) {
@@ -197,7 +176,7 @@ NAN_METHOD(associate) {
 }
 
 NAN_MODULE_INIT(GeneratorInit) {
-  NAN_EXPORT(target, hasDriver);
+  NAN_EXPORT(target, listDriverlessDevices);
   NAN_EXPORT(target, associate);
 }
 
