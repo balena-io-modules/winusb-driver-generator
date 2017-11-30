@@ -68,7 +68,7 @@ NAN_METHOD(hasDriver) {
     << std::endl;
   wdi_set_log_level(WDI_LOG_LEVEL_WARNING);
 
-  bool found = false;
+  bool found = true;
   int code = WDI_SUCCESS;
   struct wdi_device_info *device_list_node;
 
@@ -81,7 +81,7 @@ NAN_METHOD(hasDriver) {
         << ":0x" << device_list_node->pid
         << std::endl;
       if (device_list_node->vid == vendor && device_list_node->pid == product) {
-        found = true;
+        found = false;
         break;
       }
     }
