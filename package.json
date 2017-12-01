@@ -23,7 +23,7 @@
     "lint": "npm run lint-js && npm run lint-cpp",
     "test": "npm run lint",
     "install": "prebuild-install || npm run rebuild",
-    "upload-prebuilds": "prebuild --runtime electron --target 1.6.0 --target 1.7.0 --strip"
+    "upload-prebuilds": "prebuild --runtime electron --target 1.7.9 --strip"
   },
   "author": "Juan Cruz Viotti <juan@resin.io>",
   "license": "Apache-2.0",
