@@ -29,6 +29,7 @@ install:
   - cd C:\projects\winusb-driver-generator
   - git submodule update --init --recursive
   - ps: Install-Product node $env:nodejs_version $env:Platform
+  - if %Platform%==x86 (set npm_config_target_arch=ia32) else (set npm_config_target_arch=%Platform%)
   - npm install --build-from-source
   - pip install cpplint
 
