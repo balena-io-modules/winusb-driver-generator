@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## v1.1.5 - 2018-03-23
+
+- Fix prebuild generation
+
 ## v1.1.4 - 2018-03-13
 
 - Install prebuild on rebuild if available 
