@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## v1.1.7 - 2018-03-23
+
+- Update libwdi submodule
+- Also remove prebuilding for Electron 1.8.2
+
 ## v1.1.6 - 2018-03-23
 
 - Fix prebuild generation, again
