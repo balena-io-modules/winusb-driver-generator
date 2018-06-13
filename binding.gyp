@@ -1,59 +1,233 @@
 {
   "targets": [
     {
-      "target_name": "libwdi",
+      "target_name": "libwdi_configuration",
       "type": "none",
+      "actions": [
+        {
+          "action_name": "detect_arch",
+          "message": "Detecting build architecture",
+          "inputs": [],
+          "outputs": [ "<(module_root_dir)/deps/libwdi/build64.h" ],
+          "action": [ "call", "deps/detect-arch.bat", "<(target_arch)" ]
+        },
+        {
+          "action_name": "configure",
+          "message": "Configuring libwdi",
+          "inputs": [],
+          "outputs": [ "<(module_root_dir)/deps/libwdi/msvc/config.h" ],
+          "action": [ "call", "deps/config.bat" ]
+        }
+      ]
+    },
+    {
+      "target_name": "libwdi",
+      "type": "static_library",
+      "dependencies": [
+        "libwdi_configuration",
+        "installer_x86",
+        "installer_x64",
+        "embedder"
+      ],
       "conditions": [
-        [ 'OS=="win"', {
+        [ "OS=='win'", {
           "actions": [
             {
-              "action_name": "wdk_build",
-              "inputs": [ "" ],
-              "outputs": [ "deps/libwdi/libwdi/libwdi.lib" ],
-              "action": [ "call", "deps/libwdi_build.bat", "<(target_arch)" ],
+              "action_name": "embed",
+              "message": "Embedding binary resources",
+              "inputs": [],
+              "outputs": [ "<(module_root_dir)/deps/libwdi/libwdi/embedded.h" ],
+              "action": [ "call", "deps/embed.bat" ]
             }
           ],
-        } ],
+          "conditions": [
+            [ "target_arch=='x64'", {
+              "defines": [
+                "_CRT_SECURE_NO_WARNINGS",
+                "_WIN32",
+                "_WIN64",
+                "_LIB"
+              ]
+            }, {
+              "defines": [
+                "_CRT_SECURE_NO_WARNINGS",
+                "_WIN32",
+                "_LIB"
+              ]
+            }]
+          ],
+          "include_dirs": [
+            "<(module_root_dir)/deps/libwdi/libwdi",
+            "<(module_root_dir)/deps/libwdi/msvc"
+          ],
+          "sources": [
+            "<(module_root_dir)/deps/libwdi/libwdi/libwdi.c",
+            "<(module_root_dir)/deps/libwdi/libwdi/libwdi_dlg.c",
+            "<(module_root_dir)/deps/libwdi/libwdi/logging.c",
+            "<(module_root_dir)/deps/libwdi/libwdi/pki.c",
+            "<(module_root_dir)/deps/libwdi/libwdi/tokenizer.c",
+            "<(module_root_dir)/deps/libwdi/libwdi/vid_data.c"
+          ]
+        }]
       ],
+      "configurations": {
+        "Release": {
+          "msvs_settings": {
+            "VCCLCompilerTool": {
+              "WarningLevel": 3,
+              "ExceptionHandling": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "target_name": "embedder",
+      "target_arch": "ia32",
+      "type": "executable",
+      "win_delay_load_hook": "false",
+      "dependencies": [
+        "libwdi_configuration",
+        "installer_x86",
+        "installer_x64"
+      ],
+      "conditions": [
+        [ "OS=='win'", {
+          "include_dirs": [
+            "<(module_root_dir)/deps/libwdi/libwdi",
+            "<(module_root_dir)/deps/libwdi/msvc"
+          ],
+          "defines": [
+            "_CRT_SECURE_NO_WARNINGS"
+          ],
+          "sources": [
+            "<(module_root_dir)/deps/libwdi/libwdi/embedder.c"
+          ]
+        }]
+      ]
+    },
+    {
+      "target_name": "installer_x64",
+      "type": "executable",
+      "win_delay_load_hook": "false",
+      "dependencies": [
+        "libwdi_configuration"
+      ],
+      "conditions": [
+        [ "OS=='win'", {
+          "include_dirs": [
+            "<(module_root_dir)/deps/libwdi/libwdi",
+            "<(module_root_dir)/deps/libwdi/msvc"
+          ],
+          "defines": [
+            "_CRT_SECURE_NO_WARNINGS",
+            "_WIN64"
+          ],
+          "sources": [
+            "<(module_root_dir)/deps/libwdi/libwdi/installer.c"
+          ],
+          "link_settings": {
+            "libraries": [
+              "-lnewdev.lib",
+              "-lsetupapi.lib"
+            ]
+          }
+        }]
+      ],
+      "configurations": {
+        "Release": {
+          "msvs_settings": {
+            "VCCLCompilerTool": {
+              "WarningLevel": 3,
+              "ExceptionHandling": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "target_name": "installer_x86",
+      "target_arch": "ia32",
+      "type": "executable",
+      "win_delay_load_hook": "false",
+      "dependencies": [
+        "libwdi_configuration"
+      ],
+      "conditions": [
+        [ "OS=='win'", {
+          "include_dirs": [
+            "<(module_root_dir)/deps/libwdi/libwdi",
+            "<(module_root_dir)/deps/libwdi/msvc"
+          ],
+          "defines": [
+            "_CRT_SECURE_NO_WARNINGS"
+          ],
+          "sources": [
+            "<(module_root_dir)/deps/libwdi/libwdi/installer.c"
+          ],
+          "link_settings": {
+            "libraries": [
+              "-lnewdev.lib",
+              "-lsetupapi.lib"
+            ]
+          }
+        }]
+      ],
+      "configurations": {
+        "Release": {
+          "msvs_settings": {
+            "VCCLCompilerTool": {
+              "WarningLevel": 3,
+              "ExceptionHandling": 1
+            }
+          }
+        }
+      }
     },
     {
       "target_name": "Generator",
       "dependencies" : [
-        "libwdi",
+        "libwdi"
       ],
       "include_dirs" : [
         "<!(node -e \"require('nan')\")",
-        '.'
+        "."
       ],
       "conditions": [
-        [ 'OS=="win"', {
+        [ "OS=='win'", {
           "include_dirs": [
-            "<(module_root_dir)\\deps\\libwdi\\libwdi",
+            "<(module_root_dir)/deps/libwdi/libwdi"
           ],
-          'msvs_settings': {
-            'VCCLCompilerTool': {
-              'AdditionalOptions': [ '/GL-', '/MD' ],
+          "msvs_settings": {
+            "VCCLCompilerTool": {
+              "WarningLevel": 3,
+              "AdditionalOptions": [ "/GL-", "/MD" ]
             },
           },
           "link_settings": {
+            "library_dirs+": [
+              "<(module_root_dir)/build/Release"
+            ],
             "libraries": [
-              "-llibwdi.lib",
-              "-llibwdi.obj",
               "-lsetupapi.lib",
-            ],
-            "conditions": [
-              [ 'target_arch=="x64"', {
-                "library_dirs": [ "<(module_root_dir)\\deps\\libwdi\\libwdi\\objfre_win7_amd64\\amd64" ],
-              }, {
-                "library_dirs": [ "<(module_root_dir)\\deps\\libwdi\\libwdi\\objfre_win7_x86\\i386" ],
-              } ]
-            ],
+              "-llibwdi.lib"
+            ]
           },
           "sources": [
             "src/generator.cpp",
-          ],
-        } ],
+          ]
+        }]
       ],
-    },
-  ],
+      "configurations": {
+        "Release": {
+          "msvs_settings": {
+            "VCCLCompilerTool": {
+              "WarningLevel": 3,
+              "ExceptionHandling": 1
+            }
+          }
+        }
+      }
+    }
+  ]
 }
