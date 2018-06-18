@@ -1,7 +1,7 @@
 # Appveyor file
 # http://www.appveyor.com/docs/appveyor-yml
 
-image: Visual Studio 2013
+image: Visual Studio 2015
 
 init:
   - git config --global core.autocrlf input

@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "configure": "node-gyp configure",
-    "build": "node-gyp build",
+    "build": "node-gyp rebuild",
     "rebuild": "prebuild-install || node-gyp rebuild",
     "lint-js": "eslint *.js",
     "lint-cpp": "cpplint --recursive src",
