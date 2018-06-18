@@ -3,34 +3,38 @@
     {
       "target_name": "libwdi_configuration",
       "type": "none",
-      "actions": [
-        {
-          "action_name": "detect_arch",
-          "message": "Detecting build architecture",
-          "inputs": [],
-          "outputs": [ "<(module_root_dir)/deps/libwdi/build64.h" ],
-          "action": [ "call", "deps/detect-arch.bat", "<(target_arch)" ]
-        },
-        {
-          "action_name": "configure",
-          "message": "Configuring libwdi",
-          "inputs": [],
-          "outputs": [ "<(module_root_dir)/deps/libwdi/msvc/config.h" ],
-          "action": [ "call", "deps/config.bat" ]
-        }
+      "conditions": [
+        [ "OS=='win'", {
+          "actions": [
+            {
+              "action_name": "detect_arch",
+              "message": "Detecting build architecture",
+              "inputs": [],
+              "outputs": [ "<(module_root_dir)/deps/libwdi/build64.h" ],
+              "action": [ "call", "deps/detect-arch.bat", "<(target_arch)" ]
+            },
+            {
+              "action_name": "configure",
+              "message": "Configuring libwdi",
+              "inputs": [],
+              "outputs": [ "<(module_root_dir)/deps/libwdi/msvc/config.h" ],
+              "action": [ "call", "deps/config.bat" ]
+            }
+          ]
+        }]
       ]
     },
     {
       "target_name": "libwdi",
-      "type": "static_library",
-      "dependencies": [
-        "libwdi_configuration",
-        "installer_x86",
-        "installer_x64",
-        "embedder"
-      ],
       "conditions": [
         [ "OS=='win'", {
+          "type": "static_library",
+          "dependencies": [
+            "libwdi_configuration",
+            "installer_x86",
+            "installer_x64",
+            "embedder"
+          ],
           "actions": [
             {
               "action_name": "embed",
@@ -67,32 +71,32 @@
             "<(module_root_dir)/deps/libwdi/libwdi/pki.c",
             "<(module_root_dir)/deps/libwdi/libwdi/tokenizer.c",
             "<(module_root_dir)/deps/libwdi/libwdi/vid_data.c"
-          ]
-        }]
-      ],
-      "configurations": {
-        "Release": {
-          "msvs_settings": {
-            "VCCLCompilerTool": {
-              "WarningLevel": 3,
-              "ExceptionHandling": 1
+          ],
+          "configurations": {
+            "Release": {
+              "msvs_settings": {
+                "VCCLCompilerTool": {
+                  "WarningLevel": 3,
+                  "ExceptionHandling": 1
+                }
+              }
             }
           }
-        }
-      }
+        }]
+      ]
     },
     {
       "target_name": "embedder",
-      "target_arch": "ia32",
-      "type": "executable",
-      "win_delay_load_hook": "false",
-      "dependencies": [
-        "libwdi_configuration",
-        "installer_x86",
-        "installer_x64"
-      ],
       "conditions": [
         [ "OS=='win'", {
+          "target_arch": "ia32",
+          "type": "executable",
+          "win_delay_load_hook": "false",
+          "dependencies": [
+            "libwdi_configuration",
+            "installer_x86",
+            "installer_x64"
+          ],
           "include_dirs": [
             "<(module_root_dir)/deps/libwdi/libwdi",
             "<(module_root_dir)/deps/libwdi/msvc"
@@ -108,13 +112,13 @@
     },
     {
       "target_name": "installer_x64",
-      "type": "executable",
-      "win_delay_load_hook": "false",
-      "dependencies": [
-        "libwdi_configuration"
-      ],
       "conditions": [
         [ "OS=='win'", {
+          "type": "executable",
+          "win_delay_load_hook": "false",
+          "dependencies": [
+            "libwdi_configuration"
+          ],
           "include_dirs": [
             "<(module_root_dir)/deps/libwdi/libwdi",
             "<(module_root_dir)/deps/libwdi/msvc"
@@ -131,30 +135,30 @@
               "-lnewdev.lib",
               "-lsetupapi.lib"
             ]
-          }
-        }]
-      ],
-      "configurations": {
-        "Release": {
-          "msvs_settings": {
-            "VCCLCompilerTool": {
-              "WarningLevel": 3,
-              "ExceptionHandling": 1
+          },
+          "configurations": {
+            "Release": {
+              "msvs_settings": {
+                "VCCLCompilerTool": {
+                  "WarningLevel": 3,
+                  "ExceptionHandling": 1
+                }
+              }
             }
           }
-        }
-      }
+        }]
+      ]
     },
     {
       "target_name": "installer_x86",
-      "target_arch": "ia32",
-      "type": "executable",
-      "win_delay_load_hook": "false",
-      "dependencies": [
-        "libwdi_configuration"
-      ],
       "conditions": [
         [ "OS=='win'", {
+          "target_arch": "ia32",
+          "type": "executable",
+          "win_delay_load_hook": "false",
+          "dependencies": [
+            "libwdi_configuration"
+          ],
           "include_dirs": [
             "<(module_root_dir)/deps/libwdi/libwdi",
             "<(module_root_dir)/deps/libwdi/msvc"
@@ -170,31 +174,31 @@
               "-lnewdev.lib",
               "-lsetupapi.lib"
             ]
-          }
-        }]
-      ],
-      "configurations": {
-        "Release": {
-          "msvs_settings": {
-            "VCCLCompilerTool": {
-              "WarningLevel": 3,
-              "ExceptionHandling": 1
+          },
+          "configurations": {
+            "Release": {
+              "msvs_settings": {
+                "VCCLCompilerTool": {
+                  "WarningLevel": 3,
+                  "ExceptionHandling": 1
+                }
+              }
             }
           }
-        }
-      }
+        }]
+      ]
     },
     {
       "target_name": "Generator",
-      "dependencies" : [
-        "libwdi"
-      ],
       "include_dirs" : [
         "<!(node -e \"require('nan')\")",
         "."
       ],
       "conditions": [
         [ "OS=='win'", {
+          "dependencies" : [
+            "libwdi"
+          ],
           "include_dirs": [
             "<(module_root_dir)/deps/libwdi/libwdi"
           ],
@@ -215,19 +219,19 @@
           },
           "sources": [
             "src/generator.cpp",
-          ]
-        }]
-      ],
-      "configurations": {
-        "Release": {
-          "msvs_settings": {
-            "VCCLCompilerTool": {
-              "WarningLevel": 3,
-              "ExceptionHandling": 1
+          ],
+          "configurations": {
+            "Release": {
+              "msvs_settings": {
+                "VCCLCompilerTool": {
+                  "WarningLevel": 3,
+                  "ExceptionHandling": 1
+                }
+              }
             }
           }
-        }
-      }
+        }]
+      ]
     }
   ]
 }
