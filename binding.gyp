@@ -1,4 +1,6 @@
 {
+  # See https://github.com/mafintosh/prebuildify/issues/10 for context on `build_v8_with_gn`
+  "build_v8_with_gn": "false",
   "targets": [
     {
       "target_name": "libwdi_configuration",
