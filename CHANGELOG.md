@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.3 - 2019-01-11
+
+* Don't try to install on platforms other than win32 [Alexis Svinartchouk]
+
+## 1.2.2 - 2018-07-11
+
+* Fix(prebuild): Fix prebuild double upload [Jonas Hermsmeier]
+
+## 1.2.1 - 2018-07-03
+
+* Fix(ci): Fix build_v8_with_gn when prebuilding [Jonas Hermsmeier]
+* Fix(binding): Set build_v8_with_gn to fix prebuilding [Jonas Hermsmeier]
+
+## 1.2.0 - 2018-06-20
+
+* Fix(binding): Fix code being generated on MacOS [Jonas Hermsmeier]
+* Feat(binding): Build libwdi with gyp & VS2015 [Jonas Hermsmeier]
+* Chore(ci): Add prebuild targets for new Node/Electron versions [Jonas Hermsmeier]
+
 ## v1.1.7 - 2018-03-23
 
 - Update libwdi submodule
