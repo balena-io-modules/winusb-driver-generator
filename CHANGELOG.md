@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+## 1.2.4 - 2019-01-22
+
+* Add .resinci.yml to only trigger ci on windows [Alexis Svinartchouk]
+* Pull git submodules before publishing [Alexis Svinartchouk]
+* Update prebuild and prebuild-install [Alexis Svinartchouk]
+
 * Don't try to install on platforms other than win32 [Alexis Svinartchouk]
 
 ## 1.2.2 - 2018-07-11
