@@ -23,7 +23,8 @@
     "lint": "npm run lint-js && npm run lint-cpp",
     "test": "npm run lint",
     "install": "prebuild-install || node-gyp rebuild",
-    "prebuilds": "prebuild"
+    "prebuilds": "prebuild",
+    "prepublish": "git submodule update --init --recursive"
   },
   "author": "Juan Cruz Viotti <juan@resin.io>",
   "license": "Apache-2.0",
@@ -34,12 +35,12 @@
     "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "mocha": "^5.2.0",
-    "prebuild": "^7.6.0"
+    "prebuild": "^8.1.2"
   },
   "dependencies": {
     "bindings": "^1.3.0",
     "nan": "^2.10.0",
-    "prebuild-install": "^4.0.0"
+    "prebuild-install": "^5.2.2"
   },
   "gypfile": true,
   "bugs": {
