@@ -1,0 +1,11 @@
+---
+npm:
+        run: true
+        platforms:
+                - name: windows
+                  os: windows
+                  architecture: x86_64
+                - name: windows
+                  os: windows
+                  architecture: x86
+
