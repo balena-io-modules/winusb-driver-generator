@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+## 1.2.5 - 2019-01-25
+
+* Fix AppVeyor build folder [Lorenzo Alberto Maria Ambrosi]
+* Rename resin to balena in README [Lorenzo Alberto Maria Ambrosi]
+
 ## 1.2.4 - 2019-01-22
 
 * Add .resinci.yml to only trigger ci on windows [Alexis Svinartchouk]
