@@ -75,8 +75,8 @@ npm test
 Contribute
 ----------
 
-- Issue Tracker: [github.com/resin-io-modules/winusb-driver-generator/issues][issues]
-- Source Code: [github.com/resin-io-modules/winusb-driver-generator][source]
+- Issue Tracker: [github.com/balena-io-modules/winusb-driver-generator/issues][issues]
+- Source Code: [github.com/balena-io-modules/winusb-driver-generator][source]
 
 ### Dependencies
 
@@ -94,7 +94,7 @@ License
 
 The project is licensed under the Apache 2.0 license.
 
-[issues]: https://github.com/resin-io-modules/winusb-driver-generator/issues
-[newissue]: https://github.com/resin-io-modules/winusb-driver-generator/issues/new
-[source]: https://github.com/resin-io-modules/winusb-driver-generator
+[issues]: https://github.com/balena-io-modules/winusb-driver-generator/issues
+[newissue]: https://github.com/balena-io-modules/winusb-driver-generator/issues/new
+[source]: https://github.com/balena-io-modules/winusb-driver-generator
 [cpplint]: https://github.com/cpplint/cpplint
