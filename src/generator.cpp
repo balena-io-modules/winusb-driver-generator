@@ -104,11 +104,13 @@ NAN_METHOD(associate) {
     return Nan::ThrowError("Description must be a string");
   }
 
-  const uint16_t vendor = info[0]->Uint32Value();
-  const uint16_t product = info[1]->Uint32Value();
+  auto context = v8::Isolate::GetCurrent()->GetCurrentContext();
+
+  const uint16_t vendor = info[0]->Uint32Value(context).ToChecked();
+  const uint16_t product = info[1]->Uint32Value(context).ToChecked();
 
   // TODO(jviotti): Is there a better way to go from v8::String to char *?
-  v8::String::Utf8Value description_v8(info[2]->ToString());
+  Nan::Utf8String description_v8(info[2]->ToString(context).ToLocalChecked());
   std::string description_string = std::string(*description_v8);
   char *description = new char[description_string.length() + 1];
   // cpplint suggests snprintf over strcpy, but the former
