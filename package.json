@@ -23,8 +23,7 @@
     "lint": "npm run lint-js && npm run lint-cpp",
     "test": "npm run lint",
     "install": "prebuild-install || node-gyp rebuild",
-    "prebuilds": "prebuild",
-    "prepublish": "git submodule update --init --recursive"
+    "prebuilds": "prebuild"
   },
   "author": "Juan Cruz Viotti <juan@resin.io>",
   "license": "Apache-2.0",
