@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+## 1.2.7 - 2020-03-12
+
+* Remove prepublish script [Alexis Svinartchouk]
+* Update nan to ^2.14 [Alexis Svinartchouk]
+* Fix(generator): Pass context to value conversions [Jonas Hermsmeier]
+
 ## 1.2.6 - 2020-03-03
 
 * Doc(README): Update requirements for building from source [Jonas Hermsmeier]
