@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+## 1.2.6 - 2020-03-03
+
+* Doc(README): Update requirements for building from source [Jonas Hermsmeier]
+
 ## 1.2.5 - 2019-01-25
 
 * Fix AppVeyor build folder [Lorenzo Alberto Maria Ambrosi]
