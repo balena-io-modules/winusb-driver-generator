@@ -1,0 +1,35 @@
+---
+name: test release
+# https://github.com/product-os/flowzone/tree/master/.github/actions
+inputs:
+  json:
+    description: "JSON stringified object containing all the inputs from the calling workflow"
+    required: true
+  secrets:
+    description: "JSON stringified object containing all the secrets from the calling workflow"
+    required: true
+
+  # --- custom environment
+  NODE_VERSION:
+    type: string
+    default: "16.x"
+  VERBOSE:
+    type: string
+    default: "true"
+
+runs:
+  # https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
+  using: "composite"
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.NODE_VERSION }}
+        cache: npm
+
+    - name: Test release
+      shell: bash
+      run: |
+        npm run flowzone-preinstall
+        npm ci
+        npm run test-windows
