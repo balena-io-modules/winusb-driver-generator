@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v1.3.0
+## (2023-01-05)
+
+* Switch to Flowzone [ab77]
+
 ## 1.2.7 - 2020-03-12
 
 * Remove prepublish script [Alexis Svinartchouk]

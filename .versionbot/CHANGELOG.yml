@@ -1,0 +1,508 @@
+- commits:
+    - subject: Switch to Flowzone
+      hash: 30136475146650486c2193f181d11634297b091d
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: ab77
+  version: 1.3.0
+  title: ""
+  date: 2023-01-05T22:50:55.246Z
+- version: 1.2.7
+  date: 2020-03-12T18:11:19Z
+  commits:
+    - hash: ef6fe454612122e07ab2803bf3e3f441bf03152a
+      author: Jonas Hermsmeier
+      footers:
+        change-type: patch
+      subject: "fix(generator): Pass context to value conversions"
+      body: |-
+        This passes the current v8 context to fix compatibility with
+        the latest versions of node & nan.
+    - hash: 721f4a791a89d6696e2f3498ec43af867ba12911
+      author: Alexis Svinartchouk
+      footers:
+        change-type: patch
+      subject: Update nan to ^2.14
+      body: null
+    - hash: 8d0fc21a989f7fa5b3a8d7c8711a3099d0b07cf5
+      author: Alexis Svinartchouk
+      footers:
+        change-type: patch
+      subject: Remove prepublish script
+      body: null
+- version: 1.2.6
+- date: 2020-03-12T17:36:32Z
+- commits:
+    - hash: d321c109dbc623401522751478182d04245ee83e
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "doc(README): Update requirements for building from source"
+- commits:
+    - body: null
+- version: 1.2.5
+- date: 2019-01-25T16:05:02Z
+- commits:
+    - hash: afb01721b11fc5094644c3d03e6d6d03a0fe7ddf
+- commits:
+    - author: Lorenzo Alberto Maria Ambrosi
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+- commits:
+    - subject: Rename resin to balena in README
+- commits:
+    - body: null
+- commits:
+    - hash: 4e37b072614a0ec5c41d015ee4f370d1dbecd4f8
+- commits:
+    - author: Lorenzo Alberto Maria Ambrosi
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Lorenzo Alberto Maria Ambrosi <lorenzothunder.ambrosi@gmail.com>
+- commits:
+    - subject: Fix AppVeyor build folder
+- commits:
+    - body: null
+- version: 1.2.4
+- date: 2019-01-22T17:01:30Z
+- commits:
+    - hash: 4250a884d946a312d2ce9e4bca767643d97c87e8
+- commits:
+    - author: Alexis Svinartchouk
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Update prebuild and prebuild-install
+- commits:
+    - body: null
+- commits:
+    - hash: 122d347dae13bbcd61e73e93dd9c3054133c2c25
+- commits:
+    - author: Alexis Svinartchouk
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Pull git submodules before publishing
+- commits:
+    - body: null
+- commits:
+    - hash: 1ab74e3336a41468b685bd945c1363809ec52bfc
+- commits:
+    - author: Alexis Svinartchouk
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Add .resinci.yml to only trigger ci on windows
+- commits:
+    - body: null
+- version: 1.2.3
+- date: 2019-01-11T15:29:48Z
+- commits:
+    - hash: f2ee9e9671c2411a1378c3e7a648218015f4783d
+- commits:
+    - author: Alexis Svinartchouk
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Don't try to install on platforms other than win32
+- commits:
+    - body: null
+- commits:
+    - hash: d2f63b78d820aee53873e6624dfe3f375a1e3f2a
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - subject: "chore(package): Version 1.2.2"
+- commits:
+    - body: null
+- version: 1.2.2
+- date: 2018-07-11T14:27:11Z
+- commits:
+    - hash: 1672d217f37572c1b6307b31fb993f5b882d2451
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "fix(prebuild): Fix prebuild double upload"
+- commits:
+    - body: |-
+        Electron 1.8.x and 2.0.x have the same module ABI (v57),
+        causing the uploads to conflict and become reserved, yet not complete,
+        in turn causing further uploads and downloads to fail for that prebuild.
+- version: 1.2.1
+- date: 2018-07-03T19:05:16Z
+- commits:
+    - hash: 13c8e97731e6cc8ed12b0d7702cbbe1f5ac59ce5
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - subject: "chore(package): Version 1.2.1"
+- commits:
+    - body: null
+- commits:
+    - hash: beae44d329081e83f0358d7d4c709026ee71aaa9
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "fix(ci): Fix build_v8_with_gn when prebuilding"
+- commits:
+    - body: >-
+        Due to unforeseen circumstances, prebuild's node-gyp ignores
+        `build_v8_with_gn`
+
+        from the bindings.gyp file, and it needs to be passed to npm / prebuild directly
+- commits:
+    - hash: b7473917dca563f811193a097d0bb15c4629d16e
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "fix(binding): Set build_v8_with_gn to fix prebuilding"
+- commits:
+    - body: >-
+        This defines a variable that's only defined in Node 10's common.gypi
+
+        and would otherwise cause node-gyp to fail with "gyp: name 'build_v8_with_gn' is not defined"
+- version: 1.2.0
+- date: 2018-06-20T19:02:49Z
+- commits:
+    - hash: 8e1a18d9afcf36b616af6237d49a8d228eddd149
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - subject: 1.2.0
+- commits:
+    - body: null
+- commits:
+    - hash: 92b656514157aa8d7ea9ee1217a5d56c9a116fd1
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "fix(binding): Fix code being generated on MacOS"
+- commits:
+    - body: null
+- commits:
+    - hash: 7195da22143ecfad7b22419efd24366c0959e8f7
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "chore(ci): Add prebuild targets for new Node/Electron versions"
+- commits:
+    - body: null
+- commits:
+    - hash: 040f7f7cfd319998bc38eace64f079bf9d019836
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - subject: "chore(deps): Update libwdi submodule"
+- commits:
+    - body: null
+- commits:
+    - hash: 8febcf98033847597c403e61212267f21de55141
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - subject: "test(ci): Update AppVeyor to use VS2015"
+- commits:
+    - body: null
+- commits:
+    - hash: caf7d27f0d250a4023456f5235eed6b908e20749
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - subject: "feat(binding): Build libwdi with gyp & VS2015"
+- commits:
+    - body: null
+- commits:
+    - hash: 52bfb504053aa5fc3a14e1cf380ac1f62fe44c1f
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - subject: "upgrade(package): Update dependencies"
+- commits:
+    - body: |-
+        - mocha 4.0.1 -> 5.2.0
+        - prebuild 6.2.2 -> 7.6.0
+        - eslint 4.9.0 -> 4.19.1
+        - nan 2.7.0 -> 2.10.0
+        - prebuild 2.3.0 -> 4.0.0
+- version: 1.1.7
+- date: 2018-03-23T20:52:40Z
+- commits:
+    - hash: 0f35edd2d96d0fa3950018c63dffe7cbff553512
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "fix(ci): Also remove prebuilding for  electron 1.8.2"
+- commits:
+    - body: null
+- commits:
+    - hash: b1077b79f4b1d17690aa8f5bb1071515972157c0
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "chore(package): Update libwdi submodule"
+- commits:
+    - body: null
+- version: 1.1.6
+- date: 2018-03-23T20:32:15Z
+- commits:
+    - hash: 66f2ad2a866219e7b4f26039aa9f314800a52140
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "fix(package): Remove Node v9 prebuilds"
+- commits:
+    - body: null
+- version: 1.1.5
+- date: 2018-03-23T18:32:21Z
+- commits:
+    - hash: 1b8ccd7e261049e95451a3f5b264e273fa156635
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "fix(ci): Fix prebuilds on CI"
+- commits:
+    - body: |-
+        This reverts to specifying the versions to prebuild for explicitly
+        again, as prebuilding for Node v9.0.0 fails when using --all
+- version: 1.1.4
+- date: 2018-03-06T14:22:12Z
+- commits:
+    - hash: e0622ad5754aa6e8cf4dd7830c5e01cebdf0ef5c
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "chore(package): Install prebuild on rebuild if available"
+- commits:
+    - body: |-
+        This will install a prebuilt native binding on rebuilds,
+        avoiding requiring the WDK during rebuilds
+- version: 1.1.3
+- date: 2018-03-01T15:12:40Z
+- commits:
+    - hash: a1a3b669034e3b230bed3ce39eba707c7636d806
+- commits:
+    - author: Jonas Hermsmeier
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: "chore(package): Prebuild for all targets & runtimes"
+- commits:
+    - body: This enables prebuilding for all Node & Electron target ABIs
+- version: 1.1.2
+- date: 2018-01-06T00:10:17Z
+- commits:
+    - hash: 0c0429894d51ec59c42522659d40f33bcf455d40
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Do real x86 builds
+- commits:
+    - body: |-
+        Even if we set `platform` to `x86`, the Appveyor machine is still
+        64-bit, causing libwdi to still be built as amd64 when bundled with the
+        x86 addon.
+- version: 1.1.1
+- date: 2017-12-07T21:36:27Z
+- commits:
+    - hash: ba7e43573406b4a9fa6568a5bf2945b36616ece4
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Prebuild packages for Node.js v6
+- commits:
+    - body: null
+- commits:
+    - hash: 0dbfd2ff306d7e9b48274d339af3dac46d5aaf05
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Make use of Appveyor platforms instead of TARGET_ARCH
+- commits:
+    - body: null
+- version: 1.1.0
+- date: 2017-11-30T20:54:04Z
+- commits:
+    - hash: bb7eb0dd6eaaa28cbf1dcf794a7f4e4c6f626493
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Add usb_driver/ to gitignore
+- commits:
+    - body: null
+- commits:
+    - hash: b772165710bbd9fa36eb8e068e00f91260cb0c52
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Rename the "prebuild" npm script to something else
+- commits:
+    - body: That has special meaning to npm.
+- commits:
+    - hash: dff199de91292531a3b6e96f7bd5d655a3e0ca08
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Implement .listDriverlessDevices()
+- commits:
+    - body: null
+- version: 1.0.1
+- date: 2017-11-30T17:13:50Z
+- commits:
+    - hash: 342a77649d6095d3ab7fa52407e0a588ed990c60
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Fix silly logical issue on `.hasDriver()`
+- commits:
+    - body: null
+- version: 1.0.0
+- date: 2017-11-25T21:19:09Z
+- commits:
+    - hash: 03896b2ddb97547b2c6fc01f524ed032546100f3
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Integrate prebuild
+- commits:
+    - body: null
+- commits:
+    - hash: 041976f571293e1ffd14d3dd7253a06a48ca459a
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Add LICENSE file
+- commits:
+    - body: null
+- commits:
+    - hash: c7d00534b12187f69f61620845a3e67cbe652d34
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Update example test file
+- commits:
+    - body: null
+- commits:
+    - hash: b9b66b57d03a4cae2fc4f98cebf4dafe08659779
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Implement associate function
+- commits:
+    - body: null
+- commits:
+    - hash: 6960474c77de6dda612abb1d04d87c902947bb7d
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Fix linter warnings
+- commits:
+    - body: null
+- commits:
+    - hash: 5b68de96380ae57a2cb89798fbbfff160726368a
+- commits:
+    - author: Juan Cruz Viotti
+- commits:
+    - footers:
+        signed-off-by: Juan Cruz Viotti <jv@jviotti.com>
+- commits:
+    - subject: Add appveyor.yml
+- commits:
+    - body: null
