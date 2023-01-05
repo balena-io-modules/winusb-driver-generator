@@ -1,4 +1,18 @@
 - commits:
+    - subject: "chore(deps): update deps/libwdi digest to 6722681"
+      hash: cf7f1a17a93adff95ebed2809f9bfd5c71cdc9e0
+      body: |
+        Update deps/libwdi to
+
+        Update deps/libwdi from  to
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Renovate Bot
+  version: 1.4.0
+  title: ""
+  date: 2023-01-05T23:08:23.216Z
+- commits:
     - subject: Switch to Flowzone
       hash: 30136475146650486c2193f181d11634297b091d
       body: ""
