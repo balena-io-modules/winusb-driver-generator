@@ -1,4 +1,18 @@
 - commits:
+    - subject: "chore(deps): update node.js to 18.13.0"
+      hash: 928ca96c248fe5ab1a02c57e1c1f4b4cfd92759e
+      body: |
+        Update node to 18.13.0
+
+        Update node from 16.19.0 to 18.13.0
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Renovate Bot
+  version: 1.5.0
+  title: ""
+  date: 2023-01-06T02:58:48.920Z
+- commits:
     - subject: "chore(deps): update deps/libwdi digest to 6722681"
       hash: cf7f1a17a93adff95ebed2809f9bfd5c71cdc9e0
       body: |

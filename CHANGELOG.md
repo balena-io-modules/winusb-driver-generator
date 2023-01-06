@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v1.5.0
+## (2023-01-06)
+
+* chore(deps): update node.js to 18.13.0 [Renovate Bot]
+
 # v1.4.0
 ## (2023-01-05)
 
