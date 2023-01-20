@@ -49,7 +49,7 @@
     "url": "https://github.com/resin-io-modules/winusb-driver-generator/issues"
   },
   "engines": {
-    "node": "16"
+    "node": ">=16 < 19"
   },
   "versionist": {
     "publishedAt": "2023-01-05T23:08:23.374Z"
