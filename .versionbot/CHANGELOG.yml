@@ -1,4 +1,15 @@
 - commits:
+    - subject: Add support for Node 18
+      hash: f366578887174f2dea005735f92f16ff5cd2f5f8
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Akis Kesoglou
+  version: 1.5.0
+  title: ""
+  date: 2023-01-20T10:11:05.406Z
+- commits:
     - subject: "chore(deps): update deps/libwdi digest to 6722681"
       hash: cf7f1a17a93adff95ebed2809f9bfd5c71cdc9e0
       body: |

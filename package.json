@@ -1,6 +1,6 @@
 {
   "name": "winusb-driver-generator",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "main": "index.js",
   "description": "Associate a USB vendor/product ID pair with WinUSB",
   "homepage": "https://github.com/resin-io-modules/winusb-driver-generator",
@@ -52,6 +52,6 @@
     "node": ">=16 < 19"
   },
   "versionist": {
-    "publishedAt": "2023-01-05T23:08:23.374Z"
+    "publishedAt": "2023-01-20T10:11:05.604Z"
   }
 }
