@@ -74,7 +74,8 @@ Napi::Value ListDriverlessDevices(const Napi::CallbackInfo& info) {
 
     code = wdi_destroy_list(device_list_node);
     if (code != WDI_SUCCESS) {
-      Napi::TypeError::New(env, wdi_strerror(code)).ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, wdi_strerror(code))
+        .ThrowAsJavaScriptException();
       return env.Null();
     }
 
@@ -84,7 +85,8 @@ Napi::Value ListDriverlessDevices(const Napi::CallbackInfo& info) {
   // If the list of driverless devices is empty, then we
   // can assume every device has a driver.
   } else if (code != WDI_ERROR_NO_DEVICE) {
-    Napi::TypeError::New(env, wdi_strerror(code)).ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, wdi_strerror(code))
+      .ThrowAsJavaScriptException();
     return env.Null();
   }
 
@@ -95,22 +97,26 @@ Napi::Value Associate(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
 
   if (info.Length() != 3) {
-    Napi::TypeError::New(env, "This function expects 3 arguments").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "This function expects 3 arguments")
+      .ThrowAsJavaScriptException();
     return env.Null();
   }
 
   if (!info[0].IsNumber()) {
-    Napi::TypeError::New(env, "Product id must be a number").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Product id must be a number")
+      .ThrowAsJavaScriptException();
     return env.Null();
   }
 
   if (!info[1].IsNumber()) {
-    Napi::TypeError::New(env, "Vendor id must be a number").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Vendor id must be a number")
+      .ThrowAsJavaScriptException();
     return env.Null();
   }
 
   if (!info[2].IsString()) {
-    Napi::TypeError::New(env, "Description must be a string").ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, "Description must be a string")
+      .ThrowAsJavaScriptException();
     return env.Null();
   }
 
@@ -146,7 +152,8 @@ Napi::Value Associate(const Napi::CallbackInfo& info) {
   std::cout << "Extracting driver files" << std::endl;
   code = generator_generate_winusb_inf(&device, INF_NAME, INF_PATH);
   if (code != WDI_SUCCESS) {
-    Napi::TypeError::New(env, wdi_strerror(code)).ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, wdi_strerror(code))
+      .ThrowAsJavaScriptException();
     return env.Null();
   }
 
@@ -165,20 +172,23 @@ Napi::Value Associate(const Napi::CallbackInfo& info) {
   } else if (code == WDI_ERROR_NO_DEVICE) {
     matching_device_found = false;
   } else {
-    Napi::TypeError::New(env, wdi_strerror(code)).ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, wdi_strerror(code))
+      .ThrowAsJavaScriptException();
     return env.Null();
   }
 
   code = generator_install_winusb_inf(&device, INF_NAME, INF_PATH);
   if (code != WDI_SUCCESS) {
-    Napi::TypeError::New(env, wdi_strerror(code)).ThrowAsJavaScriptException();
+    Napi::TypeError::New(env, wdi_strerror(code))
+      .ThrowAsJavaScriptException();
     return env.Null();
   }
 
   if (matching_device_found) {
     code = wdi_destroy_list(device_list_node);
     if (code != WDI_SUCCESS) {
-      Napi::TypeError::New(env, wdi_strerror(code)).ThrowAsJavaScriptException();
+      Napi::TypeError::New(env, wdi_strerror(code))
+        .ThrowAsJavaScriptException();
     return env.Null();
     }
   }
@@ -188,8 +198,12 @@ Napi::Value Associate(const Napi::CallbackInfo& info) {
 }
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
-  exports.Set(Napi::String::New(env, "listDriverlessDevices"), Napi::Function::New(env, ListDriverlessDevices));
-  exports.Set(Napi::String::New(env, "associate"), Napi::Function::New(env, Associate));
+  exports.Set(
+    Napi::String::New(env, "listDriverlessDevices"),
+    Napi::Function::New(env, ListDriverlessDevices));
+  exports.Set(
+    Napi::String::New(env, "associate"),
+    Napi::Function::New(env, Associate));
   return exports;
 }
 
