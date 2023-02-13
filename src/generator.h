@@ -18,7 +18,7 @@
  */
 
 #include <stdio.h>
-#include <nan.h>
+#include <napi.h>
 #include <libwdi.h>
 #include <string>
 #include <iostream>
@@ -32,7 +32,7 @@
 #pragma warning(disable:28159)
 #endif
 
-NAN_METHOD(hasDriver);
-NAN_METHOD(associate);
+Napi::Value listDriverlessDevices(const Napi::CallbackInfo& info);
+Napi::Value associate(const Napi::CallbackInfo& info);
 
 #endif  // SRC_GENERATOR_H_

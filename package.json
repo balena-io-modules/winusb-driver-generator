@@ -19,14 +19,14 @@
     "configure": "node-gyp configure",
     "build-windows": "node-gyp rebuild",
     "build": "echo npm run build-windows",
-    "rebuild": "prebuild-install || node-gyp rebuild",
+    "rebuild": "prebuild-install --runtime napi || node-gyp rebuild",
     "lint-js": "eslint *.js",
     "lint-cpp": "cpplint --recursive src",
     "lint": "npm run lint-js && npm run lint-cpp",
     "test-windows": "npm run lint",
     "test": "echo npm run test-windows",
-    "install": "prebuild-install || node-gyp rebuild",
-    "prebuilds": "prebuild"
+    "install": "prebuild-install --runtime napi || node-gyp rebuild",
+    "prebuilds": "prebuild --runtime napi"
   },
   "author": "Juan Cruz Viotti <juan@resin.io>",
   "license": "Apache-2.0",
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "bindings": "^1.5.0",
-    "nan": "^2.17.0",
+    "node-addon-api": "^5.0.0",
     "prebuild-install": "^7.1.1"
   },
   "gypfile": true,

@@ -15,6 +15,7 @@
  */
 
 #include "src/generator.h"
+#include <napi.h>
 
 static int
 generator_list_driverless_devices(struct wdi_device_info **result) {
@@ -46,10 +47,11 @@ generator_install_winusb_inf(struct wdi_device_info *device,
   return wdi_install_driver(device, path, name, NULL);
 }
 
-NAN_METHOD(listDriverlessDevices) {
+Napi::Value ListDriverlessDevices(const Napi::CallbackInfo& info) {
   int code = WDI_SUCCESS;
   struct wdi_device_info *device_list_node;
-  v8::Local<v8::Object> devices = Nan::New<v8::Array>();
+  Napi::Env env = info.Env();
+  Napi::Object devices = Napi::Array::New(env);
   wdi_set_log_level(WDI_LOG_LEVEL_WARNING);
 
   code = generator_list_driverless_devices(&device_list_node);
@@ -57,22 +59,24 @@ NAN_METHOD(listDriverlessDevices) {
     uint32_t index = 0;
     for (; device_list_node != NULL
          ; device_list_node = device_list_node->next) {
-      v8::Local<v8::Object> device = Nan::New<v8::Object>();
-      Nan::Set(device, Nan::New<v8::String>("vid").ToLocalChecked(),
-        Nan::New<v8::Number>(static_cast<double>(device_list_node->vid)));
-      Nan::Set(device, Nan::New<v8::String>("pid").ToLocalChecked(),
-        Nan::New<v8::Number>(static_cast<double>(device_list_node->pid)));
-      Nan::Set(device, Nan::New<v8::String>("hid").ToLocalChecked(),
-        Nan::New<v8::String>(device_list_node->hardware_id).ToLocalChecked());
-      Nan::Set(device, Nan::New<v8::String>("did").ToLocalChecked(),
-        Nan::New<v8::String>(device_list_node->device_id).ToLocalChecked());
-      Nan::Set(devices, index, device);
+      Napi::Object device = Napi::Object::New(env);
+      device.Set(Napi::String::New(env, "vid"),
+        Napi::Number::New(env, static_cast<double>(device_list_node->vid)));
+      device.Set(Napi::String::New(env, "pid"),
+        Napi::Number::New(env, static_cast<double>(device_list_node->pid)));
+      device.Set(Napi::String::New(env, "hid"),
+        Napi::String::New(env, device_list_node->hardware_id));
+      device.Set(Napi::String::New(env, "did"),
+        Napi::String::New(env, device_list_node->device_id));
+      device.Set(index, device);
       index++;
     }
 
     code = wdi_destroy_list(device_list_node);
     if (code != WDI_SUCCESS) {
-      return Nan::ThrowError(wdi_strerror(code));
+      Napi::TypeError::New(env, wdi_strerror(code))
+        .ThrowAsJavaScriptException();
+      return env.Null();
     }
 
   // This means the returned list is empty.
@@ -81,37 +85,45 @@ NAN_METHOD(listDriverlessDevices) {
   // If the list of driverless devices is empty, then we
   // can assume every device has a driver.
   } else if (code != WDI_ERROR_NO_DEVICE) {
-    return Nan::ThrowError(wdi_strerror(code));
+    Napi::TypeError::New(env, wdi_strerror(code))
+      .ThrowAsJavaScriptException();
+    return env.Null();
   }
 
-  info.GetReturnValue().Set(devices);
+  return devices;
 }
 
-NAN_METHOD(associate) {
+Napi::Value Associate(const Napi::CallbackInfo& info) {
+  Napi::Env env = info.Env();
+
   if (info.Length() != 3) {
-    return Nan::ThrowError("This function expects 3 arguments");
+    Napi::TypeError::New(env, "This function expects 3 arguments")
+      .ThrowAsJavaScriptException();
+    return env.Null();
   }
 
-  if (!info[0]->IsNumber()) {
-    return Nan::ThrowError("Product id must be a number");
+  if (!info[0].IsNumber()) {
+    Napi::TypeError::New(env, "Product id must be a number")
+      .ThrowAsJavaScriptException();
+    return env.Null();
   }
 
-  if (!info[1]->IsNumber()) {
-    return Nan::ThrowError("Vendor id must be a number");
+  if (!info[1].IsNumber()) {
+    Napi::TypeError::New(env, "Vendor id must be a number")
+      .ThrowAsJavaScriptException();
+    return env.Null();
   }
 
-  if (!info[2]->IsString()) {
-    return Nan::ThrowError("Description must be a string");
+  if (!info[2].IsString()) {
+    Napi::TypeError::New(env, "Description must be a string")
+      .ThrowAsJavaScriptException();
+    return env.Null();
   }
 
-  auto context = v8::Isolate::GetCurrent()->GetCurrentContext();
+  const uint32_t vendor = info[0].As<Napi::Number>().Uint32Value();
+  const uint32_t product = info[1].As<Napi::Number>().Uint32Value();
 
-  const uint16_t vendor = info[0]->Uint32Value(context).ToChecked();
-  const uint16_t product = info[1]->Uint32Value(context).ToChecked();
-
-  // TODO(jviotti): Is there a better way to go from v8::String to char *?
-  Nan::Utf8String description_v8(info[2]->ToString(context).ToLocalChecked());
-  std::string description_string = std::string(*description_v8);
+  std::string description_string = info[2].As<Napi::String>().Utf8Value();
   char *description = new char[description_string.length() + 1];
   // cpplint suggests snprintf over strcpy, but the former
   // is not implemented in Visual Studio 2013.
@@ -140,7 +152,9 @@ NAN_METHOD(associate) {
   std::cout << "Extracting driver files" << std::endl;
   code = generator_generate_winusb_inf(&device, INF_NAME, INF_PATH);
   if (code != WDI_SUCCESS) {
-    return Nan::ThrowError(wdi_strerror(code));
+    Napi::TypeError::New(env, wdi_strerror(code))
+      .ThrowAsJavaScriptException();
+    return env.Null();
   }
 
   std::cout << "Installing driver" << std::endl;
@@ -158,28 +172,39 @@ NAN_METHOD(associate) {
   } else if (code == WDI_ERROR_NO_DEVICE) {
     matching_device_found = false;
   } else {
-    return Nan::ThrowError(wdi_strerror(code));
+    Napi::TypeError::New(env, wdi_strerror(code))
+      .ThrowAsJavaScriptException();
+    return env.Null();
   }
 
   code = generator_install_winusb_inf(&device, INF_NAME, INF_PATH);
   if (code != WDI_SUCCESS) {
-    return Nan::ThrowError(wdi_strerror(code));
+    Napi::TypeError::New(env, wdi_strerror(code))
+      .ThrowAsJavaScriptException();
+    return env.Null();
   }
 
   if (matching_device_found) {
     code = wdi_destroy_list(device_list_node);
     if (code != WDI_SUCCESS) {
-      return Nan::ThrowError(wdi_strerror(code));
+      Napi::TypeError::New(env, wdi_strerror(code))
+        .ThrowAsJavaScriptException();
+    return env.Null();
     }
   }
 
   delete [] description;
-  info.GetReturnValue().SetUndefined();
+  return env.Undefined();
 }
 
-NAN_MODULE_INIT(GeneratorInit) {
-  NAN_EXPORT(target, listDriverlessDevices);
-  NAN_EXPORT(target, associate);
+Napi::Object Init(Napi::Env env, Napi::Object exports) {
+  exports.Set(
+    Napi::String::New(env, "listDriverlessDevices"),
+    Napi::Function::New(env, ListDriverlessDevices));
+  exports.Set(
+    Napi::String::New(env, "associate"),
+    Napi::Function::New(env, Associate));
+  return exports;
 }
 
-NODE_MODULE(Generator, GeneratorInit)
+NODE_API_MODULE(Generator, Init)

@@ -193,8 +193,12 @@
     {
       "target_name": "Generator",
       "include_dirs" : [
-        "<!(node -e \"require('nan')\")",
+        "<!@(node -p \"require('node-addon-api').include\")",
         "."
+      ],
+      'dependencies': ["<!(node -p \"require('node-addon-api').gyp\")"],
+      "defines": [
+        "NAPI_VERSION=<(napi_build_version)"
       ],
       "conditions": [
         [ "OS=='win'", {
