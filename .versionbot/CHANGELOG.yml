@@ -1,4 +1,18 @@
 - commits:
+    - subject: "patch: fix linting long lines"
+      hash: 1c449945e94871e64d477284c2ec0d3f0cc8adf1
+      body: ""
+      footer: {}
+      author: mcraa
+    - subject: "major: migrate to NAPI"
+      hash: de012670ef0b6abe303cb345774cab9d6412962e
+      body: ""
+      footer: {}
+      author: mcraa
+  version: 2.0.0
+  title: ""
+  date: 2023-02-13T16:13:36.774Z
+- commits:
     - subject: Add support for Node 18
       hash: f366578887174f2dea005735f92f16ff5cd2f5f8
       body: ""

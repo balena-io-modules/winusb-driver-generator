@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v2.0.0
+## (2023-02-13)
+
+* patch: fix linting long lines [mcraa]
+* major: migrate to NAPI [mcraa]
+
 # v1.5.0
 ## (2023-01-20)
 
