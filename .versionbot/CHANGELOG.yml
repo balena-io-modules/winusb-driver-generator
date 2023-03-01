@@ -1,4 +1,18 @@
 - commits:
+    - subject: "chore(deps): update deps/libwdi digest to 90278c5"
+      hash: 1a698304aad299832f820e610199958d99f2754e
+      body: |
+        Update deps/libwdi to
+
+        Update deps/libwdi from  to
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Renovate Bot
+  version: 2.1.0
+  title: ""
+  date: 2023-03-01T19:51:37.820Z
+- commits:
     - subject: "patch: fix linting long lines"
       hash: 1c449945e94871e64d477284c2ec0d3f0cc8adf1
       body: ""
