@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v2.1.1
+## (2023-12-19)
+
+* Remove repo config from flowzone.yml [Kyle Harding]
+
 # v2.1.0
 ## (2023-03-01)
 

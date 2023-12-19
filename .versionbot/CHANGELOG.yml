@@ -1,4 +1,20 @@
 - commits:
+    - subject: Remove repo config from flowzone.yml
+      hash: a10dadc7cf4a86ed2854e68a3981f2875936716d
+      body: |
+        This functionality is being deprecated in Flowzone.
+
+        See: https://github.com/product-os/flowzone/pull/833
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+  version: 2.1.1
+  title: ""
+  date: 2023-12-19T22:01:37.292Z
+- commits:
     - subject: "chore(deps): update deps/libwdi digest to 90278c5"
       hash: 1a698304aad299832f820e610199958d99f2754e
       body: |
