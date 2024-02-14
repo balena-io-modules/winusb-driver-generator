@@ -1,4 +1,19 @@
 - commits:
+    - subject: Replace deprecated flowzone input tests_run_on
+      hash: 024d80586ed20afa86c58d56b8297d6b3c13870f
+      body: |
+        The `custom_runs_on` array supports multiple runner labels
+        in nested arrays.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+  version: 2.1.2
+  title: ""
+  date: 2024-02-14T19:34:50.652Z
+- commits:
     - subject: Remove repo config from flowzone.yml
       hash: a10dadc7cf4a86ed2854e68a3981f2875936716d
       body: |
