@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v2.1.3
+## (2024-06-19)
+
+* Pin actions/setup-node action to 1a4442c [Self-hosted Renovate Bot]
+
 # v2.1.2
 ## (2024-02-14)
 
