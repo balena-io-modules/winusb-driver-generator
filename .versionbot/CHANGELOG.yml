@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update deps/libwdi digest to 9b23b82
+      hash: 2b6b3a4688054509bd79a4e3e77ef97f59e43641
+      body: |
+        Update deps/libwdi
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+  version: 2.1.4
+  title: ""
+  date: 2024-06-19T15:53:09.703Z
+- commits:
     - subject: Pin actions/setup-node action to 1a4442c
       hash: 7767ff52bdec6860f1fb7c64cbf049816e9ec30d
       body: |

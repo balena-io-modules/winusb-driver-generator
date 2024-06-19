@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v2.1.4
+## (2024-06-19)
+
+* Update deps/libwdi digest to 9b23b82 [Self-hosted Renovate Bot]
+
 # v2.1.3
 ## (2024-06-19)
 
