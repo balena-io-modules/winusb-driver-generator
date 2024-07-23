@@ -1,4 +1,14 @@
 - commits:
+    - subject: Switch to new custom syntax
+      hash: 60cf57c79ac48f302c65c15928b3b75ea882505f
+      body: ""
+      footer:
+        change-type: patch
+      author: Anton Belodedenko
+  version: 2.1.5
+  title: ""
+  date: 2024-07-23T23:17:46.499Z
+- commits:
     - subject: Update deps/libwdi digest to 9b23b82
       hash: 2b6b3a4688054509bd79a4e3e77ef97f59e43641
       body: |

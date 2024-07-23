@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v2.1.5
+## (2024-07-23)
+
+* Switch to new custom syntax [Anton Belodedenko]
+
 # v2.1.4
 ## (2024-06-19)
 
