@@ -13,14 +13,14 @@
               "message": "Detecting build architecture",
               "inputs": [],
               "outputs": [ "<(module_root_dir)/deps/libwdi/build64.h" ],
-              "action": [ "call", "deps/detect-arch.bat", "<(target_arch)" ]
+              "action": [ "../deps/detect-arch.bat", "<(target_arch)" ]
             },
             {
               "action_name": "configure",
               "message": "Configuring libwdi",
               "inputs": [],
               "outputs": [ "<(module_root_dir)/deps/libwdi/msvc/config.h" ],
-              "action": [ "call", "deps/config.bat" ]
+              "action": [ "../deps/config.bat" ]
             }
           ]
         }]
@@ -43,7 +43,7 @@
               "message": "Embedding binary resources",
               "inputs": [],
               "outputs": [ "<(module_root_dir)/deps/libwdi/libwdi/embedded.h" ],
-              "action": [ "call", "deps/embed.bat" ]
+              "action": [ "../deps/embed.bat" ]
             }
           ],
           "conditions": [

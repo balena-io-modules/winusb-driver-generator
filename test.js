@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-'use strict';
-
 const winusbDriverGenerator = require('.');
 
 const VENDOR_ID = 0x0a5c;

@@ -21,7 +21,10 @@ Requirements
 **Building from Source:**
 
 - [Visual Studio](https://visualstudio.microsoft.com/)
-- [Windows Driver Kit (WDK) 10](https://docs.microsoft.com/en-us/windows-hardware/drivers/download-the-wdk)
+- [Windows Driver Kit (WDK) 10](https://docs.microsoft.com/en-us/windows-hardware/drivers/download-the-wdk) 
+
+note that latest version of the WDK doesn't provide the required coinstaller dll anymore, and older WDK are not downloadable anymore, this repo contains the reqired dll
+See deps/deps/wdk_10_redist_x64/license.rtf for specific licences that applies to those
 
 Documentation
 -------------
