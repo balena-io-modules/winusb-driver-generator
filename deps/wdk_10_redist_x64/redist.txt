@@ -1,0 +1,13 @@
+Redist\wdf\x64\kmdf-1.11-Win-6.0.msu
+Redist\wdf\x64\kmdf-1.11-Win-6.1.msu
+Redist\wdf\x64\umdf-1.11-Win-6.0.msu
+Redist\wdf\x64\umdf-1.11-Win-6.1.msu
+Redist\wdf\x64\WdfCoInstaller01007.dll
+Redist\wdf\x64\WdfCoInstaller01009.dll
+Redist\wdf\x64\WdfCoInstaller01011.dll
+Redist\wdf\x64\winusbcoinstaller.dll
+Redist\wdf\x64\winusbcoinstaller2.dll
+Redist\wdf\x64\WinUSB_1.9.msu
+Redist\wdf\x64\WUDFUpdate_01007.dll
+Redist\wdf\x64\WUDFUpdate_01009.dll
+Redist\wdf\x64\WUDFUpdate_01011.dll

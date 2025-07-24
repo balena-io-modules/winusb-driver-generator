@@ -1,5 +1,8 @@
 @echo off
 
+cd /d "%~dp0"
+cd ../build
+
 :: See https://stackoverflow.com/a/3432895
 for /F %%i in ("%1") do set ARCHITECTURE=%%~ni
 

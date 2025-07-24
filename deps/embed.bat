@@ -1,5 +1,8 @@
 @echo off
 
+cd /d "%~dp0"
+cd ../build
+
 :: node-gyp will put us in the top level build/ directory by default
 copy Release\embedder.exe ..\deps\libwdi\libwdi
 mkdir ..\deps\libwdi\Win32\Release\helper

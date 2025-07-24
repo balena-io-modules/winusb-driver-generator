@@ -34,22 +34,22 @@
     "win32"
   ],
   "devDependencies": {
-    "chai": "^4.1.2",
-    "eslint": "^8.31.0",
-    "mocha": "^10.2.0",
-    "prebuild": "^11.0.4"
+    "chai": "^5.2.1",
+    "eslint": "^9.31.0",
+    "mocha": "^11.7.1",
+    "prebuild": "^13.0.1"
   },
   "dependencies": {
     "bindings": "^1.5.0",
-    "node-addon-api": "^5.0.0",
-    "prebuild-install": "^7.1.1"
+    "node-addon-api": "^8.5.0",
+    "prebuild-install": "^7.1.3"
   },
   "gypfile": true,
   "bugs": {
     "url": "https://github.com/resin-io-modules/winusb-driver-generator/issues"
   },
   "engines": {
-    "node": ">=16 < 19"
+    "node": ">=20 < 23"
   },
   "versionist": {
     "publishedAt": "2024-07-23T23:17:46.618Z"

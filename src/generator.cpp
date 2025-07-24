@@ -16,6 +16,8 @@
 
 #include "src/generator.h"
 #include <napi.h>
+#include <string>
+#include <iostream>
 
 static int
 generator_list_driverless_devices(struct wdi_device_info **result) {

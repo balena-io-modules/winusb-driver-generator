@@ -18,8 +18,6 @@
  * @module winusb-driver-generator
  */
 
-'use strict';
-
 module.exports = require('bindings')({
   bindings: 'Generator',
   /* eslint-disable camelcase */
