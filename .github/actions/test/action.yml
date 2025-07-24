@@ -27,15 +27,6 @@ runs:
         node-version: ${{ inputs.NODE_VERSION }}
         cache: npm
 
-    # Microsoft no longer ship coinstaller dlls with the WDK, they also don't provide installer for older versions of the WDK anymore.
-    # We need to backport the coinstaller dlls from an older version of the WDK to build the driver.
-    - name: Backported coinstaller dll (from windows-wdk 10.0.19041.685)
-      shell: bash
-      run: |
-        mkdir -p "C:/Program Files (x86)/Windows Kits/10/Redist/wdf/x64"
-        mv ./deps/wdk_10_redist_x64/WdfCoInstaller01011.dll "C:/Program Files (x86)/Windows Kits/10/Redist/wdf/x64/WdfCoInstaller01011.dll"
-        mv ./deps/wdk_10_redist_x64/winusbcoinstaller2.dll "C:/Program Files (x86)/Windows Kits/10/Redist/wdf/x64/winusbcoinstaller2.dll"
-
     - name: Test release
       shell: bash
       run: |
