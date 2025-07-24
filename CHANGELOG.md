@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v2.1.7
+## (2025-07-24)
+
+* Update actions/setup-node digest to 3235b87 [balena-renovate[bot]]
+
 # v2.1.6
 ## (2025-07-24)
 
