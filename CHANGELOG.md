@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v2.1.6
+## (2025-07-24)
+
+* patch: bump and fixes for windows2022 builder [Edwin Joassart]
+
 # v2.1.5
 ## (2024-07-23)
 

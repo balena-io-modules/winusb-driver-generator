@@ -1,4 +1,13 @@
 - commits:
+    - subject: "patch: bump and fixes for windows2022 builder"
+      hash: 896434db1f62395796cd3f7c5406cf634b3e5502
+      body: ""
+      footer: {}
+      author: Edwin Joassart
+  version: 2.1.6
+  title: ""
+  date: 2025-07-24T12:21:11.648Z
+- commits:
     - subject: Switch to new custom syntax
       hash: 60cf57c79ac48f302c65c15928b3b75ea882505f
       body: ""
