@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update deps/libwdi digest to 30df0c0
+      hash: b16f8d7ea0760d23cd33cab5b387b9314e8fb26b
+      body: |
+        Update deps/libwdi
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+  version: 2.1.8
+  title: ""
+  date: 2025-07-24T14:10:43.205Z
+- commits:
     - subject: Update actions/setup-node digest to 3235b87
       hash: 3aa3e0546c2ab17c4b728e0eae719c3a6256592f
       body: |

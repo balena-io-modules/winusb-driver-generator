@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v2.1.8
+## (2025-07-24)
+
+* Update deps/libwdi digest to 30df0c0 [balena-renovate[bot]]
+
 # v2.1.7
 ## (2025-07-24)
 
