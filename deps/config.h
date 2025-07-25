@@ -21,8 +21,9 @@
  * match your WinUSB redist directrories
  */
 #ifndef WDK_DIR
-#define WDK_DIR "C:/Program Files (x86)/Windows Kits/10"
+#define WDK_DIR "../../wdk_10_redist_x64/"
 #endif
+
 
 /* WDK WDF coinstaller version */
 #define WDF_VER 1011
@@ -31,7 +32,7 @@
 #define COINSTALLER_DIR "wdf"
 
 /* 64bit subdirectory for WinUSB redist files ("x64" or "amd64") */
-#define X64_DIR "x64"
+#define X64_DIR ""
 
 /* embed libusb0 driver files from the following location */
 #ifndef LIBUSB0_DIR
