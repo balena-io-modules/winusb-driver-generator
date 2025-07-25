@@ -1,4 +1,13 @@
 - commits:
+    - subject: "patch: fix deps build path"
+      hash: 115231a1099b40143d6a108ced8c93378765bcee
+      body: ""
+      footer: {}
+      author: Edwin Joassart
+  version: 2.1.9
+  title: ""
+  date: 2025-07-25T08:43:25.812Z
+- commits:
     - subject: Update deps/libwdi digest to 30df0c0
       hash: b16f8d7ea0760d23cd33cab5b387b9314e8fb26b
       body: |

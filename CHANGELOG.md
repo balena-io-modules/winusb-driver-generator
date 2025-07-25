@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3 - 2019-01-11
 
+# v2.1.9
+## (2025-07-25)
+
+* patch: fix deps build path [Edwin Joassart]
+
 # v2.1.8
 ## (2025-07-24)
 
