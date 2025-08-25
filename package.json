@@ -34,7 +34,7 @@
     "win32"
   ],
   "devDependencies": {
-    "chai": "^5.2.1",
+    "chai": "^6.0.0",
     "eslint": "^9.31.0",
     "mocha": "^11.7.1",
     "prebuild": "^13.0.1"
