@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update actions/setup-node action to v5
+      hash: ad47dd55309ec88ba9fb5e2c3d40cfb21c2b5da3
+      body: |
+        Update actions/setup-node from 3 to 5
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+  version: 2.1.11
+  title: ""
+  date: 2026-11-02T22:33:31.785Z
+- commits:
     - subject: "Add id-token: write permission for NPM OIDC publishing"
       hash: 80df39ff9e03e2995cf57c9e21e9202f000ca9c3
       body: ""
